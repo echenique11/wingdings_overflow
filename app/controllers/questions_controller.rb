@@ -14,6 +14,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+
+    tags_array = params[:tags].split(",").map {|tag| tag.strip}
+    tags_array.each do |tag|
+      @question.tags << Tag.new(tag_name: tag)
+    end
     if @question.save
       redirect_to question_path(@question)
     else
