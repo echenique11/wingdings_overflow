@@ -4,6 +4,7 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
   has_many :comments, as: :commentable
 
+  validates :body, :question_id, :user_id, presence: :true
   validates_uniqueness_of :question_id, scope: :user_id
   validate :different_user
 
