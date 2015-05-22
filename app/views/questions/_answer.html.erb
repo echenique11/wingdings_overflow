@@ -8,7 +8,7 @@
     <div>
     <p><%= label_tag :body, "Type your comment here." %></p>
     <%= text_area_tag :body %>
-    <%= hidden_field_tag 'question_id', @question.id %>
+    <%= hidden_field_tag 'answer_id', @answer.id %>
     </div>
     <div>
     <%= submit_tag "Submit" %>
