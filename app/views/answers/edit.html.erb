@@ -1,6 +1,6 @@
 <p>I am the edit page</p>
 
-<%= form_tag question_answer_path(answer.question.id, answer.id) do %>
+<%= form_tag question_answer_path(@answer.question.id, answer.id) do %>
   <div>
     <%= label_tag :body, "Answer" %><br>
     <%= text_area_tag :body %>
