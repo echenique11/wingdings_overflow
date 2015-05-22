@@ -7,8 +7,8 @@ class AnswersController < ApplicationController
       if @answer.save
         redirect_to question_path(@answer.question)
       else
-        flash[:warning] = "Could not save answerm please try again."
-        render :new
+        flash[:warning] = "Could not save answer please try again."
+        redirect_to :back
       end
     end
 
