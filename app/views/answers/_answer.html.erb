@@ -1,0 +1,15 @@
+
+<div class="answer_partial">
+  <p>Answer: <%= answer.body %></p>
+  <p>User: <%= answer.user_id %></p>
+  <p>Karma: <%= answer.karma %></p>
+</div>
+
+<% if current_user.id == answer.user_id %>
+  <%= link_to "Edit", edit_question_answer_path(answer.question_id, answer.id) %>
+<% end %>
+
+
+<%= render partial:"comments/form", locals: {id_type: "answer_id", id: answer.id}  %>
+
+<%= render answer.comments %>

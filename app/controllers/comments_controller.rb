@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
     commentable.comments.build(body: params[:body], user_id: current_user.id)
     if commentable.save
-      redirect_to question_path(params[:question_id])
+      redirect_to :back
     else
       flash[:warning] = "That was an invalid comment."
       redirect_to :back
