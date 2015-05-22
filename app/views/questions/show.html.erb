@@ -16,7 +16,7 @@
 
 
 <div class="comment_form">
-  <%= form_tag('/comments') do %>
+  <%= form_tag comments_path do %>
     <p><%= label_tag :body, "Type your comment here." %></p>
     <%= text_area_tag :body %>
     <%= hidden_field_tag 'question_id', @question.id %>
@@ -27,3 +27,4 @@
 <div class="comments">
   <% render @question.comments %>
 </div>
+
