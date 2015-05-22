@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521215909) do
+ActiveRecord::Schema.define(version: 20150521220956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text     "body",                        null: false
+    t.boolean  "best_answer", default: false
+    t.integer  "user_id",                     null: false
+    t.integer  "question_id",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "body",             null: false
+    t.integer  "user_id",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "title",      null: false
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                    null: false
@@ -23,6 +51,15 @@ ActiveRecord::Schema.define(version: 20150521215909) do
     t.integer  "reputation",      default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "score"
+    t.integer  "voteable_id",   null: false
+    t.string   "voteable_type", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
