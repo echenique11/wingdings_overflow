@@ -15,7 +15,24 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to user_path
+      redirect_to question_path(@question)
+    else
+      flash[:error] = "That was an invalid question."
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @question.update_attributes(params[:question])
+      flash[:success] = "Question updated."
+      redirect_to question_path(@question)
+    else
+      flash[:error] = "That was an invalid question."
+      render :edit
+    end
   end
 
   private
