@@ -4,4 +4,9 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
+
+  def karma
+    all_votes = Vote.where(voteable_id: id, voteable_type: "Question")
+    all_votes.sum(:score)
+  end
 end

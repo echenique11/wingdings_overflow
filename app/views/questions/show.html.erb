@@ -1,3 +1,18 @@
 <h1><%= @question.title %></h1>
 <h4><%= @question.body %></h4>
-<h4><%= @question.votes.count %></h4>
+<h4><%= @question.karma %></h4>
+
+<div class="comment_form">
+  <%= form_tag('/comments') do %>
+    <p><%= label_tag :body, "Type your comment here." %></p>
+    <%= text_area_tag :body %>
+    <%= hidden_field_tag 'question_id', @question.id %>
+    <%= submit_tag "Submit" %>
+  <% end %>
+</div>
+
+<div class="comments">
+  <% @question.comments.each do |comment| %>
+  <%= comment.body %>
+  <% end %>
+</div>

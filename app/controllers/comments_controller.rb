@@ -2,7 +2,14 @@ class CommentsController < ApplicationController
   before_filter :find_comment
 
   def create
-
+    question = Question.find_by(id: params[:question_id])
+    question.comments.build(body: params[:body], user_id: current_user.id)
+    if question.save
+      redirect_to :back
+    else
+      flash[:warning] = "That was an invalid comment."
+      redirect_to :back
+    end
   end
 
   def edit
@@ -13,7 +20,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment updated."
       redirect_to question_path(@comment)
     else
-      flash[:error] = "That was an invalid comment."
+      flash[:warning] = "That was an invalid comment."
       render :edit
     end
   end
@@ -24,6 +31,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def find_comment
     @comment = Comment.find_by(id: params[:id]) if params[:id]
   end
