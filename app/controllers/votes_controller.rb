@@ -5,15 +5,14 @@ class VotesController < ApplicationController
   end
 
   def create
-    p params
     if params[:answer_id]
-      commentable = Answer.find_by(id: params[:answer_id])
+      voteable = Answer.find_by(id: params[:answer_id])
     else
-      commentable = Question.find_by(id:params[:question_id])
+      voteable = Question.find_by(id:params[:question_id])
     end
 
-    commentable.votes.build(score: params[:score], user_id: current_user.id)
-    if commentable.save
+    voteable.votes.build(score: params[:score], user_id: current_user.id)
+    if voteable.save
       redirect_to :back
     else
       flash[:warning] = "Couln't save vote"
