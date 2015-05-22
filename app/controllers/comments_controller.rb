@@ -1,17 +1,8 @@
 class CommentsController < ApplicationController
   before_filter :find_comment
 
-  def new
-  end
-
   def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
-      redirect_to comment_path(@comment)
-    else
-      flash[:error] = "That was an invalid comment."
-      render :new
-    end
+
   end
 
   def edit
@@ -35,9 +26,5 @@ class CommentsController < ApplicationController
   private
   def find_comment
     @comment = Comment.find_by(id: params[:id]) if params[:id]
-  end
-
-  def comment_params
-    params.require(:comment).permit(:body).merge(user_id: current_user.id )
   end
 end
