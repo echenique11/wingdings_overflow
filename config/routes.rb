@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
   resources :questions, except: [:destroy] do
-    resources :answers, only: [:edit, :update]
+    resources :answers, only: [:create, :edit, :update]
   end
 
   resources :comments, except: [:index, :show]
