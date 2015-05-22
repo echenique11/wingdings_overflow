@@ -7,6 +7,7 @@ class Question < ActiveRecord::Base
 
   validates :title, :body, :user_id, presence: :true
 
+  accepts_nested_attributes_for :tags
   def karma
     all_votes = Vote.where(voteable_id: id, voteable_type: "Question")
     all_votes.sum(:score)
