@@ -1,0 +1,24 @@
+<!-- vote up -->
+
+<%= form_for @votes do |f| %>
+  <div>
+    <%= f.label :score  %>
+    <%= f.integer 1 %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!-- vote down -->
+
+<%= form_for @votes do |f| %>
+  <div>
+    <%= f.label :score  %>
+    <%= f.integer -1 %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
