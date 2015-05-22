@@ -1,2 +1,16 @@
+<div class="answer">
 <p><%= answer.body %></p>
 <p><%= answer.user_id %></p>
+</div>
+
+<div class="comment_form">
+  <%= form_tag comments_path do %>
+    <div>
+    <p><%= label_tag :body, "Type your comment here." %></p>
+    <%= text_area_tag :body %>
+    <%= hidden_field_tag 'question_id', @question.id %>
+    </div>
+    <div>
+    <%= submit_tag "Submit" %>
+    </div>
+</div>
