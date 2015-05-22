@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, except: [:index, :show, :new]
-  resources :votes, only: [:create]
+  resources :votes, only: [:new, :create]
   resources :tags, only: [:show, :index]
 
   root :to => 'questions#index'
