@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
 	has_many :questions
 	has_many :comments
 
-  validates :username, :emial, :password, presence: :true
+  validates :username, :email, :password, presence: :true
 end
