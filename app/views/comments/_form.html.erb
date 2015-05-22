@@ -1,0 +1,12 @@
+<div class="comment_form">
+  <%= form_tag comments_path do %>
+    <div>
+    <p><%= label_tag :body, "Type your comment here." %></p>
+    <%= text_area_tag :body %>
+    <%= hidden_field_tag "#{id_type}", id %>
+    </div>
+    <div>
+    <%= submit_tag "Submit" %>
+    </div>
+  <% end %>
+</div>
