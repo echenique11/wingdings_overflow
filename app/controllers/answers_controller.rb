@@ -1,10 +1,11 @@
-class AnswerController < ApplicationController::Base
-  before_filter :find_answer, :find_question
+class AnswersController < ApplicationController
+  before_filter :find_answer, except: [:create]
+  before_filter :find_question
 
     def create
       @answer = Answer.new(answer_params)
       if @answer.save
-        redirect_to question_path(@question)
+        redirect_to question_path(@answer.question)
       else
         flash[:warning] = "Could not save answerm please try again."
         render :new
@@ -36,6 +37,6 @@ class AnswerController < ApplicationController::Base
     end
 
     def answer_params
-      params.require(:answer).permit(:body, :question_id).merge(user_id: current_user.id )
+      params.permit(:body, :question_id).merge(user_id: current_user.id )
     end
 end
