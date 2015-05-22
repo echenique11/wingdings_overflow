@@ -19,11 +19,11 @@ class UsersController < ApplicationController
 
 	def show
 		@question_data = @user.questions.map do |question|
-			Hash[question.title,
-				Hash[answers: question.answers.count, 
-					comments: question.comments.count, 
-					votes: question.votes.count,
-					karma: question.karma]]
+			Hash[title: question.title,
+				answers: question.answers.count, 
+				comments: question.comments.count, 
+				votes: question.votes.count,
+				karma: question.karma]
 		end
 		
 	end
