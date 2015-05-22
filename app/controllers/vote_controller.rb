@@ -1,9 +1,13 @@
 class VoteController < ApplicationController::Base
 
+  def new
+
+  end
+
   def create
     vote = Vote.new(vote_params)
     if vote.save!
-
+      # .build
     else
       render :new
       flash[:warn] = 'Was not able to save this comment'
