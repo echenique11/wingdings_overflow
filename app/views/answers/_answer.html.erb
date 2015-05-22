@@ -5,15 +5,9 @@
   <p>Karma: <%= answer.karma %></p>
 </div>
 
-<div class="comment_form">
-  <%= form_tag comments_path do %>
-    <div>
-    <p><%= label_tag :body, "Type your comment here." %></p>
-    <%= text_area_tag :body %>
-    <%= hidden_field_tag 'answer_id', answer.id %>
-    </div>
-    <div>
-    <%= submit_tag "Submit" %>
-    </div>
-  <% end %>
-</div>
+<% if current_user.id == answer.user_id %>
+  <%= link_to "Edit", edit_question_answer_path(answer.question_id, answer.id) %>
+<% end %>
+
+
+<%= render partial:"comments/form", locals: {id_type: "answer_id", id: answer.id}  %>
