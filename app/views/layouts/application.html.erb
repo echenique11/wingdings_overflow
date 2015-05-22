@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/nav' %>
-<div class='msg'> <%= flash[:warning] %></div>
-
+  <div><%= link_to "Home", root_path  %></div>
+  <%= render 'layouts/nav' %>
+  <div class='msg'> <%= flash[:warning] %></div>
 <%= yield %>
 
 </body>
