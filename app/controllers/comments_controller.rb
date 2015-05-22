@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_filter :find_comment
 
   def create
-    p params
     if params[:answer_id]
       commentable = Answer.find_by(id: params[:answer_id])
     else
