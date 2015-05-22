@@ -1,4 +1,4 @@
-class VoteController < ApplicationController::Base
+class VotesController < ApplicationController::Base
 
   def new
 

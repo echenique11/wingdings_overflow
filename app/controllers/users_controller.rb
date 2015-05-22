@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	
+
 	before_action :set_user
 
 	def new
@@ -9,12 +9,12 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			set_session_user user.id
+			set_session_user @user.id
 			redirect_to user_path(@user.id)
 		else
 			flash[:warning] = "Couldn't create a user"
 			render :new
-		end	
+		end
 	end
 
 	def show
@@ -41,5 +41,5 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:username,:email,:password)
 	end
-	
+
 end
