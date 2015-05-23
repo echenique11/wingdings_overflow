@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :tags, only: [:show, :index]
 
   root :to => 'questions#index'
+
+  post 'users/:id/questions' => 'users#search_in_questions'
 end

@@ -33,9 +33,11 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def search_user_questions
-		result = parse_questions @user.questions_by(params[:search_by],params[:description)
-		result.to_json
+	def search_in_questions
+		respond_to do |format|
+	    result = parse_questions @user.questions_by(params[:search_by],params[:description])
+	    format.json  { render :json => result }
+	  end		
 	end
 
 	private
