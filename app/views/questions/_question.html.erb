@@ -1,3 +1,6 @@
-<h4><%= link_to question.title, question_path(question) %></h4>
-<h4>Karma: <%= question.karma %></h4>
-<%= render partial:"votes/votes", locals: {type: "question_id", id: question.id} %>
+<ul class="list-group">
+  <li class="list-group-item"><%= link_to question.title, question_path(question) %>
+    <span class="badge">Karma: <%= question.karma %></span>
+  </li>
+  <%= render partial:"votes/votes", locals: {type: "question_id", id: question.id} %>
+</ul>
