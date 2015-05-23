@@ -4,10 +4,15 @@ class AnswersController < ApplicationController
 
     def create
       @answer = Answer.new(answer_params)
-      if @answer.save
-        redirect_to question_path(@answer.question)
-      else
+      if !@answer.save
         flash[:warning] = "Could not save answer please try again."
+      end
+      if request.xhr?
+        p "not a thing"
+        respond_to do |format|
+          format.html {render @answer, layout: false}
+        end
+      else
         redirect_to :back
       end
     end
