@@ -10,10 +10,14 @@ class Vote < ActiveRecord::Base
   private
 
   def different_user
-    self.user != self.voteable.user
+    if self.user == self.voteable.user
+      errors.add(:base, "You can't vote on your own question.")
+    end
   end
 
   def one_neg_one
-    self.score == 1 || self.score == -1
+    if self.score != 1 || self.score != -1
+      errors.add(:base, "That is an illegal vote.")
+    end
   end
 end
