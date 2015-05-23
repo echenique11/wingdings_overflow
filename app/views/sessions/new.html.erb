@@ -1,10 +1,13 @@
-Login form
 <%= form_tag sessions_path do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
-  <%= submit_tag 'Login' %>
+<div class="input-group size">
+  <span class="input-group-addon" id="basic-addon1">Email</span>
+  <%= text_field_tag :email, nil, class: "form-control" %>
+</div>
+<div class="input-group size">
+  <span class="input-group-addon" id="basic-addon1">Password</span>
+  <%= password_field_tag :password, nil, class: "form-control" %>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+  <%= submit_tag 'Login', class: "btn btn-default" %>
+</div>
 <% end %>
