@@ -91,3 +91,10 @@ function navButton(label,index,options){
 	return html;
 }
 
+function searchAllQuestionsBy(){
+	var search_by = $("#search_by").val();
+	var description = $("#description").val();
+	var url = "/?search_by=" + search_by + "&description=" + description;
+	window.location = url;
+}
+
