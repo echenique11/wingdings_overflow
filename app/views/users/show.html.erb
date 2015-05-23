@@ -5,18 +5,19 @@
 <div>
 	<ul class='search_container'>
 		<li>Search by:</li>
-		<li><select id="search_by">
+		<li><select id="search_by" name="search_by">
 			<option value='title'>Title</option>
-			<option value='tag'>Tags</option>
+			<option value='tags'>Tags</option>
 		</select> </li>
 		<li><input id="description" type="text" /></li>
-		<li><input type="button" onclick="searchQuestion()" value="search"/></li>
+		<li><input type="button" onclick="searchQuestion(<%=@user.id%>)" value="search"/></li>
 	</ul>
 </div>
 
 
 <%= javascript_tag do %>
   var questions = <%=raw @question_data.to_json %>;
+  console.log("dd" + questions);
 <% end %>
 
 <div id="chart_div" style="width: 900px; height: 500px;"></div>

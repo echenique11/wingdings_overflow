@@ -46,3 +46,19 @@ function drawChart(index,options){
 	var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
 	chart.draw(questions_data[index], options);
 }
+
+function searchQuestion(user_id){
+	var url = "/users/" + user_id + "/questions"
+	var search_by = $("#search_by").val();
+	var description = $("#description").val();
+	console.log(search_by + description);
+	$.post(url,{search_by:search_by,description:description},function(response){
+			if(response.length){
+				questions = response;
+				setupChart();
+			} else {
+				alert("Questions not found, check your search.");
+			}
+	});
+
+}
