@@ -1,8 +1,30 @@
-<%= gravitar(@user.email).html_safe %>
-<h1><%= @user.username %></h1>
-<h6><%= @user.email %></h6>
+<div class="jumbotron">
+  <%= gravitar(@user.email).html_safe %>
+  <h1>Sup' <%= @user.username %></h1>
+	<p><%= @user.email %></p>
+  <p><%= link_to "Ask a Question", new_question_path, class: "btn btn-primary btn-lg" %></p>
+</div>
 
-<%= link_to "Ask question", new_question_path %>
+<!--
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search by...">
+      <span class="input-group-btn">
+      	</div>
+</div> -->
+
+>>>>>>> designs sign up page
+
 <div>
 	<ul class='search_container'>
 		<li>Search by:</li>
@@ -25,4 +47,3 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>loadGApi();</script>
 
-    
