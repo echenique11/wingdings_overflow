@@ -10,6 +10,7 @@ class VotesController < ApplicationController
     else
       voteable = Question.find_by(id:params[:question_id])
     end
+
     voteable.votes.build(score: params[:score], user_id: current_user.id)
     if !voteable.save
       flash[:warning] = "Couldn't save vote"
