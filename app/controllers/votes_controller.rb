@@ -11,7 +11,6 @@ class VotesController < ApplicationController
       commentable = Question.find_by(id:params[:question_id])
     end
     commentable.votes.build(score: params[:score], user_id: current_user.id)
-
     if !commentable.save
       flash[:warning] = "Couldn't save vote"
     end

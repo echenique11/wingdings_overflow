@@ -21,7 +21,6 @@ var createVote = function(event){
     method: formMethod,
     data: formParams,
   }).done(function(response){
-    console.log($(event.target).parent());
     $(event.target).parent().find('.karma').text(response);
   }).fail(function(error){
     console.log(error);
