@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	before_action :set_user
-
+	before_filter :require_authentication, only:[:show,:edit,:update,:search_in_questions]
 	def new
 		@user = User.new
 	end
@@ -58,6 +58,10 @@ class UsersController < ApplicationController
 				votes: question.votes.count,
 				karma: question.karma]
 		end
+	end
+
+	def require_authentication
+		redirect_to login_path unless ( is_authenticated? && (@user == current_user))
 	end
 
 end
