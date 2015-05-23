@@ -11,7 +11,7 @@
   <%= link_to "Edit", edit_question_answer_path(answer.question_id, answer.id) %>
 <% end %>
 </div>
-
+<a class="toggle-comment-form" href="#">Comment</a>
 <%= render partial:"comments/form", locals: {id_type: "answer_id", id: answer.id}  %>
 
 <%= render answer.comments %>
