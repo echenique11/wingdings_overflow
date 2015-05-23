@@ -6,7 +6,7 @@ $( document ).ready(function() {
 
 var toggleComment = function(event) {
   event.preventDefault();
-  $('.comment-form').toggle();
+  $(event.target).closest('.comment-section').find('.comment-form').toggle();
 };
 
 var createVote = function(event){
@@ -29,8 +29,8 @@ var createComment = function(event){
     method: event.target.method,
     data: $(event.target).serialize(),
   }).done(function(response){
-    $('.comments').append(response);
-    $('#comment_body').val("");
+    $(event.target).closest('.comment-section').find('.comments').append(response);
+    $('.comment_body').val("");
   }).fail(function(error){
     console.log(error);
   });
