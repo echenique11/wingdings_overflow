@@ -4,6 +4,7 @@ function loadGApi(){
 }
 
 function setupChart() {	
+  chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
   questions_data = [];
   for( var i = 0; i < questions.length; i += 5 ){
   		
@@ -38,11 +39,12 @@ var ChartOption = function(from,to,total){
 	this.vAxis = {title: ""};
 	this.hAxis = {title: "Questions"};
 	this.seriesType = "bars";
-	this.series = {5: {type: "line"}};
+	//this.series = {3: {type: "line"}};
+	this.animation = { duration: 1000, easing: 'in'};
 
 }
+
 function drawChart(index,options){
-	var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
 	chart.draw(questions_data[index], options);
 }
 
@@ -61,6 +63,7 @@ function searchQuestion(user_id){
 }
 
 function setupChartNavigation(options){
+	$("#chart_nav").html('');
 	if(questions.length > 5){
 		for(var i = 0; i < questions.length; i += 5){
 				var number_questions = 5;
@@ -78,9 +81,13 @@ function setupChartNavigation(options){
 function navButton(label,index,options){
 	options = JSON.stringify(options);
 	var action = "drawChart("+index+","+options.replace(/\"/g,"'") +")";
-	var html = "<input type='button' value='";
-	html += label + "' onClick=\"";
-	html +=	 action + "\"/>";
+	
+	var html = "<span class='input-group-btn input-group-addon'>";
+	html += "<button type='button' class='btn btn-default' ";
+	html += " onClick=\"";
+	html +=	 action + "\">";
+	html += label + "</button>"
+	html += "</span>";
 	return html;
 }
 
