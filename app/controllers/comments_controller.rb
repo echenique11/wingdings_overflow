@@ -9,10 +9,15 @@ class CommentsController < ApplicationController
     end
 
     commentable.comments.build(body: params[:body], user_id: current_user.id)
-    if commentable.save
-      redirect_to :back
-    else
+    if !commentable.save
       flash[:warning] = "That was an invalid comment."
+    end
+
+    if request.xhr?
+      respond_to do |format|
+        format.html {render "comments/_comment", locals:{comment: commentable.comments.last}, layout: false}
+      end
+    else
       redirect_to :back
     end
   end
