@@ -1,5 +1,5 @@
 
-<%= form_tag votes_path do |f| %>
+<%= form_tag votes_path, {class: "vote-button"} do |f| %>
   <div>
     <%= hidden_field_tag "score", 1 %>
     <%= hidden_field_tag type, id %>
@@ -7,7 +7,7 @@
   </div>
 <% end %>
 
-<%= form_tag votes_path do |f| %>
+<%= form_tag votes_path, {class: "vote-button"} do |f| %>
   <div>
     <%= hidden_field_tag "score", -1  %>
     <%= hidden_field_tag type, id %>

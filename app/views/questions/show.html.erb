@@ -1,6 +1,6 @@
 <h1><%= @question.title %></h1>
 <h4><%= @question.body %></h4>
-<h4>Karma: <%= @question.karma %></h4>
+<h4>Karma: <span class="karma"><%= @question.karma %></span></h4>
 
 <%= render partial:"votes/votes", locals: {type: "question_id", id: @question.id} %>
 <a class="toggle-comment-form" href="#">Comment</a>
