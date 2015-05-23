@@ -12,4 +12,14 @@ class Question < ActiveRecord::Base
     all_votes = Vote.where(voteable_id: id, voteable_type: "Question")
     all_votes.sum(:score)
   end
+
+  scope :questions_by, -> (key, value) do
+    if(value || key == "unanswered")
+      return self.eager_load(:tags).where(["tags.tag_name LIKE ?","%#{value}%"]) if key == "tags"
+      return self.eager_load(:answers).where("answers.question_id IS NULL") if key == "unanswered"
+      self.where([" title LIKE ?","%#{value}%"])
+    else 
+      self.all
+    end
+  end
 end

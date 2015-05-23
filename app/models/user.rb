@@ -5,12 +5,9 @@ class User < ActiveRecord::Base
 
 	def questions_by(key, value)
 		if(value)
-			p "value #{value}"
 			return questions.eager_load(:tags).where(["tags.tag_name LIKE ?","%#{value}%"]) if key == "tags"
 			questions.where([" title LIKE ?","%#{value}%"])
 		else 
-			p "no value"
-			p questions
 			questions
 		end
 	end

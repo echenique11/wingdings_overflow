@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_filter :find_question, except: [:index, :new, :create]
 
   def index
-    @questions = Question.all
+    @questions = Question.questions_by(params[:search_by],params[:description])
   end
 
   def show

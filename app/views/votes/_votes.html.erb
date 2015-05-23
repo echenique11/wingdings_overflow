@@ -1,17 +1,17 @@
 
-<%= form_tag votes_path, {class: "vote-button"} do |f| %>
+<%= form_tag votes_path, {class: "vote-button input-group-btn input-group-addon"} do |f| %>
   <div>
     <%= hidden_field_tag "score", 1 %>
     <%= hidden_field_tag type, id %>
-    <%= submit_tag "Vote Up", class: 'btn btn-default' %>
+    <%= submit_tag "Vote Up", class: 'btn btn-success' %>
   </div>
 <% end %>
 
-<%= form_tag votes_path, {class: "vote-button"} do |f| %>
+<%= form_tag votes_path, {class: "vote-button input-group-btn input-group-addon"} do |f| %>
   <div>
     <%= hidden_field_tag "score", -1  %>
     <%= hidden_field_tag type, id %>
-    <%= submit_tag "Vote Down", class: 'btn btn-default'%>
+    <%= submit_tag "Vote Down", class: 'btn btn-warning'%>
   </div>
 <% end %>
 
