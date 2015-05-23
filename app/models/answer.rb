@@ -16,6 +16,8 @@ class Answer < ActiveRecord::Base
   private
 
   def different_user
-    self.user != question.user
+    if self.user == self.question.user
+      errors.add(:base, "You can't answer your own question.")
+    end
   end
 end
