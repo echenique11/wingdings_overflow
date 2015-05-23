@@ -5,18 +5,21 @@ class VotesController < ApplicationController
   end
 
   def create
-    p params
     if params[:answer_id]
       commentable = Answer.find_by(id: params[:answer_id])
     else
       commentable = Question.find_by(id:params[:question_id])
     end
-
     commentable.votes.build(score: params[:score], user_id: current_user.id)
-    if commentable.save
-      redirect_to :back
+    if !commentable.save
+      flash[:warning] = "Couldn't save vote"
+    end
+    if request.xhr?
+      respond_to do |format|
+        result = commentable.karma
+        format.json  { render :json => result }
+      end
     else
-      flash[:warning] = "Couln't save vote"
       redirect_to :back
     end
   end

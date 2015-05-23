@@ -1,6 +1,7 @@
 <ul class="list-group">
   <li class="list-group-item"><%= link_to question.title, question_path(question) %>
-    <span class="badge">Karma: <%= question.karma %></span>
+    <span class="badge">Karma: <span class="karma"><%= question.karma %></span></span>
   </li>
   <%= render partial:"votes/votes", locals: {type: "question_id", id: question.id} %>
 </ul>
+
