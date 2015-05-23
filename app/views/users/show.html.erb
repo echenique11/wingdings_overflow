@@ -5,7 +5,7 @@
 <div>
 	<ul class='search_container'>
 		<li>Search by:</li>
-		<li><select id="search_by">
+		<li><select id="search_by" name="search_by">
 			<option value='title'>Title</option>
 			<option value='tag'>Tags</option>
 		</select> </li>
@@ -17,6 +17,7 @@
 
 <%= javascript_tag do %>
   var questions = <%=raw @question_data.to_json %>;
+  console.log("dd" + questions);
 <% end %>
 
 <div id="chart_div" style="width: 900px; height: 500px;"></div>

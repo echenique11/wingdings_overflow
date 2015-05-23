@@ -18,14 +18,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@question_data = @user.questions.map do |question|
-			Hash[title: question.title,
-				answers: question.answers.count, 
-				comments: question.comments.count, 
-				votes: question.votes.count,
-				karma: question.karma]
-		end
-		
+		@question_data = parse_questions @user.questions
 	end
 
 	def edit
@@ -40,6 +33,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def search_user_questions
+		result = parse_questions @user.questions_by(params[:search_by],params[:description)
+		result.to_json
+	end
+
 	private
 
 	def set_user
@@ -48,6 +46,16 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:username,:email,:password)
+	end
+
+	def parse_questions (questions)
+		questions.map do |question|
+			Hash[title: question.title,
+				answers: question.answers.count, 
+				comments: question.comments.count, 
+				votes: question.votes.count,
+				karma: question.karma]
+		end
 	end
 
 end
