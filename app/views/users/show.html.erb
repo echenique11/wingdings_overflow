@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <%= gravitar(@user.email).html_safe %>
+  <img id='profile-photo' src='http://www.gravatar.com/avatar/<%= gravitar(@user.email) %>'>
   <h1>Sup' <%= @user.username %></h1>
 	<p><%= @user.email %></p>
   <p><%= link_to "Ask a Question", new_question_path, class: "btn btn-primary btn-lg" %></p>
@@ -22,8 +22,6 @@
       <span class="input-group-btn">
       	</div>
 </div>
-
->>>>>>> designs sign up page
 
 <div>
 	<ul class='search_container'>
