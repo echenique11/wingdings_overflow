@@ -1,5 +1,3 @@
-<p>I am the edit page</p>
-
 <%= form_tag question_answer_path(@answer.question.id, @answer.id), method: "put" do %>
   <div>
     <%= label_tag :body, "Answer" %><br>

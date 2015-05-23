@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
   before_filter :find_answer, except: [:create]
-  before_filter :find_question
 
     def create
       @answer = Answer.new(answer_params)
@@ -18,7 +17,7 @@ class AnswersController < ApplicationController
     def update
         if @answer.update_attributes(answer_params)
         flash[:success] = "Answer update saved"
-        redirect_to question_path(@question)
+        redirect_to question_path(@answer.question)
       else
         flash[:warning] = "Unable to update answer"
         render :edit
@@ -26,10 +25,6 @@ class AnswersController < ApplicationController
     end
 
     private
-
-    def find_question
-      @question = Question.find_by(id: params[:id]) if params[:id]
-    end
 
     def find_answer
       @answer = Answer.find_by(id: params[:id]) if params[:id]
