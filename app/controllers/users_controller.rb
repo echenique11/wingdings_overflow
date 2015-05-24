@@ -52,7 +52,8 @@ class UsersController < ApplicationController
 
 	def parse_questions (questions)
 		questions.map do |question|
-			Hash[title: question.title,
+			Hash[question_id: question.id,
+				title: question.title,
 				answers: question.answers.count, 
 				comments: question.comments.count, 
 				votes: question.votes.count,
