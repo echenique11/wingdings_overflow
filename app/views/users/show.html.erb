@@ -20,9 +20,30 @@
   var questions = <%=raw @question_data.to_json %>;
 <% end %>
 
-<div id="chart_div" class="container-yield graph_height"></div>
-<div id="chart_nav" class="input-group"></div>
 <hr>
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+    <li role="presentation"><a href="#graph" aria-controls="graph" role="tab" data-toggle="tab">Graph</a></li>
+     </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active graph_dimention" id="list">
+      <div class='loading_container'><%= image_tag "loading.gif", class: "center" %></div>
+    </div>
+    <div role="tabpanel" class="tab-pane graph_dimention" id="graph">
+      <div id="chart_div" class="graph_dimention"></div>
+    </div>
+      <div id="chart_nav" class="input-group"></div>
+  
+  </div>
+</div>
+<hr>
+
+<div id="answers_container"></div>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>loadGApi();</script>
 

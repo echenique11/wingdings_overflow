@@ -40,6 +40,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def answers 
+    p "*" * 100
+    p @questions
+    respond_to do |format|
+      format.json  { render :json => @question.answers }
+    end 
+  end
+
   private
   def find_question
     @question = Question.find_by(id: params[:id]) if params[:id]

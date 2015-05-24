@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   root :to => 'questions#index'
 
-  post 'users/:id/questions' => 'users#search_in_questions'
+  get 'users/:id/questions' => 'users#search_in_questions'
+  get 'questions/:id/answers' => 'questions#answers'
 end

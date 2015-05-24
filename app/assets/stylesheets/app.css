@@ -11,8 +11,19 @@
   margin: auto;
 }
 
-.graph_height {
+.graph_dimention {
 	height: 400px;
+	width: 100%;
+}
+
+.loading_container {
+	margin: auto;
+	width: 100px;
+	padding: 20px;
+}
+
+.loading_container img {
+	width: 100px;
 }
 
 .questionLink {

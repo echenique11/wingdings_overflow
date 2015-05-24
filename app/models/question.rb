@@ -16,7 +16,7 @@ class Question < ActiveRecord::Base
   scope :questions_by, -> (key, value) do
     if(value || key == "unanswered")
       return self.eager_load(:tags).where(["tags.tag_name LIKE ?","%#{value}%"]) if key == "tags"
-      return self.eager_load(:answers).where("answers.question_id IS NULL") if key == "unanswered"
+      return self.eager_load(:answers).where("answers.best_answer IS false or answers.question_id IS NULL") if key == "unanswered"
       self.where([" title LIKE ?","%#{value}%"])
     else 
       self.all
