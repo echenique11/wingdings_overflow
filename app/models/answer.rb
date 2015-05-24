@@ -8,6 +8,10 @@ class Answer < ActiveRecord::Base
   validates_uniqueness_of :question_id, scope: :user_id
   validate :different_user
 
+  def best_answer
+    Answer.where(question_id: id, best_answer:true)
+  end
+
   def karma
     all_votes = Vote.where(voteable_id: id, voteable_type: "Answer")
     all_votes.sum(:score)

@@ -1,3 +1,4 @@
+<h4><%= @question.user.username %> asks...</h4>
 <h1><%= @question.title %></h1>
 <h4><%= @question.body %></h4>
 <h4>Karma: <span class="karma"><%= @question.karma %></span></h4>
@@ -5,7 +6,7 @@
 <%= render partial:"votes/votes", locals: {type: "question_id", id: @question.id} %>
 <div class="comment-section">
   <a class="toggle-comment-form" href="#">Comment</a>
-  <%= render partial:"comments/form", locals:{id_type: "question_id", id: @question.id} %>
+  <%= render partial:"comments/form", locals: {id_type: "question_id", id: @question.id} %>
 
   <div class="comments">
     <%= render @question.comments %>
