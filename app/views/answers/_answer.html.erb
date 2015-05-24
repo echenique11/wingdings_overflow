@@ -2,6 +2,14 @@
   <p>Answer: <%= answer.body %></p>
   <p><em>User: <%= answer.user.username %></em></p>
   <p>Karma: <span class="karma"><%= answer.karma %></span></p>
+  <% if current_user.id == answer.question.user_id &&  %>
+    <%= form_tag question_answer_path(answer.question_id, answer.id), method: "put", class: "vote-button" do |f| %>
+    <div>
+      <%= hidden_field_tag "best_answer", "true" %>
+      <%= submit_tag "Best_answer", class: 'btn btn-default' %>
+    </div>
+    <% end %>
+  <% end %>
 </div>
 
 <%= render partial:"votes/votes", locals: {type: "answer_id", id: answer.id} %>

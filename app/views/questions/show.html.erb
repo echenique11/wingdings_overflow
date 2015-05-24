@@ -5,7 +5,7 @@
 <%= render partial:"votes/votes", locals: {type: "question_id", id: @question.id} %>
 <div class="comment-section">
   <a class="toggle-comment-form" href="#">Comment</a>
-  <%= render partial:"comments/form", locals:{id_type: "question_id", id: @question.id} %>
+  <%= render partial:"comments/form", locals: {id_type: "question_id", id: @question.id} %>
 
   <div class="comments">
     <%= render @question.comments %>

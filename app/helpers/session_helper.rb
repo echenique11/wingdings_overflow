@@ -14,4 +14,5 @@ module SessionHelper
 	def set_session_user user_id
 		session[:user_id] = user_id
 	end
+
 end

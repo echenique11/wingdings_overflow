@@ -20,7 +20,10 @@ class AnswersController < ApplicationController
     end
 
     def update
-        if @answer.update_attributes(answer_params)
+      if params[:best_answer]
+        @answer.best_answer = true
+        redirect_to question_path(@answer.question)
+      elsif @answer.update_attributes(answer_params)
         flash[:success] = "Answer update saved"
         redirect_to question_path(@answer.question)
       else
