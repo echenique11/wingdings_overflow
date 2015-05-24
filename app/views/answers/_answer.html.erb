@@ -1,8 +1,8 @@
 <div class="answer_partial">
   <p>Answer: <%= answer.body %></p>
   <p><em>User: <%= answer.user.username %></em></p>
-  <p>Karma: <span class="karma"><%= answer.karma %></span></p>
-  <% if current_user.id == answer.question.user_id &&  %>
+<!--   <p>Karma: <span class="karma"><%= answer.karma %></span></p> -->
+  <% if current_user.id == answer.question.user_id && answer.best_answer == false %>
     <%= form_tag question_answer_path(answer.question_id, answer.id), method: "put", class: "vote-button" do |f| %>
     <div>
       <%= hidden_field_tag "best_answer", "true" %>
