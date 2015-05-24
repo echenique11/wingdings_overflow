@@ -18,3 +18,11 @@
 .questionLink {
 	width:30em;
 }
+
+.single-comment {
+	border-bottom: 1px solid #DDDDDD;
+	margin: 0 auto;
+	width: 95%;
+	padding: 10px;
+	/*background-color: #DDDDDD;*/
+}
