@@ -16,7 +16,7 @@ class Vote < ActiveRecord::Base
   end
 
   def one_neg_one
-    if self.score != 1 || self.score != -1
+    if !(self.score == 1 || self.score == -1)
       errors.add(:base, "That is an illegal vote.")
     end
   end

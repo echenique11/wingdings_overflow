@@ -3,7 +3,6 @@ $( document ).ready(function() {
   $('.vote-button').on('submit', createVote);
   $('.comment-form').on('submit', createComment);
   $('#answer-form').on('submit', createAnswer);
-
 });
 
 var toggleComment = function(event) {
@@ -46,8 +45,9 @@ var createAnswer = function(event){
     data: $(event.target).serialize(),
   }).done(function(response){
     $('.answer-section').append(response);
-    $('.answer-body').val("");
+    $('<div class="answer-"></div>body').val("");
   }).fail(function(error){
     console.log(error);
   });
 };
+
