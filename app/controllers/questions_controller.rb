@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
 
     tags_array = params[:tags].split(",").map {|tag| tag.strip}
     tags_array.each do |tag|
-      @question.tags << Tag.new(tag_name: tag)
+      @question.tags << Tag.find_or_create_by(tag_name: tag)
     end
     if @question.save
       redirect_to question_path(@question)
