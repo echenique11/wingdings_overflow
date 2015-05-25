@@ -1,0 +1,27 @@
+<h1><%= @question.title %></h1>
+<h4><%= @question.body %></h4>
+<h4>Karma: <span class="karma"><%= @question.karma %></span></h4>
+<h5>Tags: <%= render @question.tags %></h5>
+<%= render partial:"votes/votes", locals: {type: "question_id", id: @question.id} %>
+<div class="comment-section">
+  <a class="toggle-comment-form" href="#">Comment</a>
+  <%= render partial:"comments/form", locals:{id_type: "question_id", id: @question.id} %>
+
+  <div class="comments">
+    <%= render @question.comments %>
+  </div>
+</div>
+<div class="answer-section">
+  <%= form_tag question_answers_path(@question.id), id: "answer-form" do %>
+    <div>
+      <%= label_tag :body, "Answer" %><br>
+      <%= text_area_tag "body", nil, class: "answer-body" %>
+    </div>
+    <div>
+      <%= submit_tag 'Answer' %>
+    </div>
+  <% end %>
+
+  <h1>Answers:</h1>
+  <%= render @question.answers %>
+</div>

@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <h1><img id='profile-photo' src='http://www.gravatar.com/avatar/<%= gravitar(@user.email) %>'> Sup' <%= @user.username %></h1>
+  <p><%= link_to "Ask a Question", new_question_path, class: "btn btn-primary btn-lg" %></p>
+</div>
+
+<div class="input-group">
+	<span class="input-group-addon">Search by</span>
+   <select class="form-control" id="search_by" name="search_by">
+			<option value='title'>Title</option>
+			<option value='tags'>Tags</option>
+			<option value='unanswered'>Unaswered</option>
+		</select> 
+  <input id="description" type="text" class="form-control" placeholder="Description...">
+  <span class="input-group-btn input-group-addon">
+    <button class="btn btn-default" type="button" onclick="searchQuestion(<%=@user.id%>)" >search</button>
+  </span>
+</div>
+
+<%= javascript_tag do %>
+  var questions = <%=raw @question_data.to_json %>;
+<% end %>
+
+<hr>
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#list" aria-controls="list" role="tab" data-toggle="tab">List</a></li>
+    <li role="presentation"><a href="#graph" aria-controls="graph" role="tab" data-toggle="tab">Graph</a></li>
+     </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active graph_dimention" id="list">
+      <div class='loading_container'><%= image_tag "loading.gif", class: "center" %></div>
+    </div>
+    <div role="tabpanel" class="tab-pane graph_dimention" id="graph">
+      <div id="chart_div" class="graph_dimention"></div>
+    </div>
+      <div id="chart_nav" class="input-group"></div>
+  
+  </div>
+</div>
+<hr>
+
+<div id="answers_container"></div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>loadGApi();</script>
+

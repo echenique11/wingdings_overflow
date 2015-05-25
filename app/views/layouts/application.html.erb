@@ -6,9 +6,15 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <%= render 'layouts/nav' %>
+    <div class='msg'> <%= flash[:warning] %></div>
+    <div class="container-yield">
+    <%= yield %>
+  </div>
+</div>
 </body>
+
 </html>

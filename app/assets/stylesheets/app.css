@@ -1,0 +1,40 @@
+.comment-form{
+  display: none;
+}
+ .size {
+  width: 30em;
+  height: 10px;
+ }
+
+.container-yield {
+  width: 50em;
+  margin: auto;
+}
+
+.graph_dimention {
+	height: 400px;
+	width: 100%;
+}
+
+.loading_container {
+	margin: auto;
+	width: 100px;
+	padding: 20px;
+}
+
+.loading_container img {
+	width: 100px;
+}
+
+.questionLink {
+	width:30em;
+}
+
+.single-comment {
+	font-size: 10px;
+	border-bottom: 1px solid #DDDDDD;
+	margin: 0 auto;
+	width: 95%;
+	padding: 2px;
+	/*background-color: #DDDDDD;*/
+}
